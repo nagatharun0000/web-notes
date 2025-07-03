@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Note</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="box">
+        <h2>Edit Note</h2>
+        <form method="POST">
+            <textarea name="updated_note" required>{{ note.content }}</textarea>
+            <button type="submit">Update</button>
+        </form>
+        <a href="/notes">Back to Notes</a>
+    </div>
+</body>
+</html>

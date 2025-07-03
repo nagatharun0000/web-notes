@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background-color: #667eea;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #5563c1;
+    }
+
+    .notes-page {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .note {
+      background: #f0f4ff;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 10px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      animation: slideIn 0.5s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container" id="loginPage">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username or Mobile" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div class="notes-page" id="notesPage">
+    <h2>Welcome to Notes</h2>
+    <div class="note">📝 Note 1: Always write clean and understandable code.</div>
+    <div class="note">💡 Note 2: Comment your code where necessary.</div>
+    <div class="note">🚀 Note 3: Responsive design matters for all devices.</div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Simple check (demo purpose only)
+      if ((username && password)) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("notesPage").style.display = "flex";
+      } else {
+        alert("Please enter valid credentials.");
+      }
+    }
+  </script>
+</body>
+</html>

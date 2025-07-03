@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Notes</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="notes-container">
+        <h1><i class="fa-solid fa-note-sticky"></i> My Notes</h1>
+
+        <!-- Note form -->
+        <form method="POST">
+            <textarea name="note" placeholder="Write your note here..." required></textarea>
+            <button type="submit">Add Note</button>
+        </form>
+
+        <!-- List of notes -->
+        <div class="note-list">
+            {% for note in notes %}
+                <div class="note">
+                    <div class="note-content">
+                        {{ note.content }}
+                        <div class="note-timestamp">
+                            🕒 Created: {{ note.created_at.strftime('%b %d, %Y – %I:%M %p') }}
+                        </div>
+                    </div>
+                    <div class="note-actions">
+                        <!-- Delete Button -->
+                        <form action="{{ url_for('delete_note', note_id=note.id) }}" method="POST" style="display:inline;">
+                            <button class="delete-btn" type="submit" title="Delete this note">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
+
+                        <!-- Edit Button -->
+                        <a href="{{ url_for('edit_note', note_id=note.id) }}" class="edit-btn" title="Edit this note">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="/logout" class="logout-link">Logout</a>
+    </div>
+</body>
+</html>
